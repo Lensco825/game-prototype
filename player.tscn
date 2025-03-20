@@ -42,10 +42,10 @@ texture = ExtResource("2_onrkg")
 expand_mode = 1
 
 [node name="interactInfo" type="Label" parent="."]
-offset_left = 539.0
-offset_top = 337.0
-offset_right = 660.0
-offset_bottom = 360.0
-text = "Hello!!"
+offset_left = 523.0
+offset_top = 338.0
+offset_right = 672.0
+offset_bottom = 361.0
+text = "Press E to intereact"
 horizontal_alignment = 1
 vertical_alignment = 1

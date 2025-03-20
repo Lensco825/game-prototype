@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	randomize()
-	remove_child(interactInfo)
+	interactInfo.modulate.a = 0
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -30,9 +30,10 @@ func positionUI():
 func _physics_process(delta):
 	positionUI()
 	if $head/Camera3D/RayCast3D.is_colliding():
-		add_child(interactInfo)
+		interactInfo.modulate.a = 1
 	else:
-		remove_child(interactInfo)
+		interactInfo.modulate.a = 0
+	
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
