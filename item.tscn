@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c48fu2stairms"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpy52"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.95919, 0, 0.333578, 1)
+grow = true
+grow_amount = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnite"]
+albedo_color = Color(0.200039, 0.669676, 0.837588, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ttk8k"]
+material = SubResource("StandardMaterial3D_tnite")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kg5e7"]
+
+[node name="item" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_overlay = SubResource("StandardMaterial3D_vpy52")
+mesh = SubResource("BoxMesh_ttk8k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kg5e7")
