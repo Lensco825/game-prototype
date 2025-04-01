@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
-var SPEED = 5.0
+var speed = 0
+const SPRINT_SPEED = 8.0
+var WALK_SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -33,6 +35,11 @@ func _physics_process(delta):
 		interactInfo.modulate.a = 1
 	else:
 		interactInfo.modulate.a = 0
+	
+	if Input.is_action_pressed("sprint"):
+		speed = SPRINT_SPEED
+	else:
+		speed = WALK_SPEED
 		
 	if Input.is_action_just_pressed("interact") && $head/Camera3D/RayCast3D.is_colliding():
 		print("good!")
@@ -47,11 +54,11 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 	move_and_slide()
 		
 		
