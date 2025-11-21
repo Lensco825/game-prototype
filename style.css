@@ -22,6 +22,22 @@ nav {
 .heroSection {
     font-family: Google Sans Flex;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-image: url("/Images/spike_smoke1.avif");
+    background-size: cover;
+    color: white;
+    height: 70%;
+}
+
+.heroSection p {
+   padding: 0 10% 0 10%;
+    text-align: center;
+}
+
+.heroSection img {
+    border-radius: 30px;
 }
 
 nav li {
